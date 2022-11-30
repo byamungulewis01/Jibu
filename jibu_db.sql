@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2022 at 10:55 AM
+-- Generation Time: Nov 30, 2022 at 12:47 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,6 +58,15 @@ CREATE TABLE `cart` (
   `refill_quantity` int(11) NOT NULL,
   `TotalAmount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `bottle_id`, `Client_Host`, `Quantity`, `refill_quantity`, `TotalAmount`) VALUES
+(10, 18, '::1', 1, 5, 900),
+(11, 11, '::1', 4, 13, 14100),
+(12, 13, '::1', 0, 1, 1500);
 
 -- --------------------------------------------------------
 
@@ -114,13 +123,13 @@ CREATE TABLE `water_bottle` (
 --
 
 INSERT INTO `water_bottle` (`id`, `Littles`, `Amount`, `Refill`, `quantity`, `Image`) VALUES
-(11, 5, 2000, 500, 13, '5Little.jpg'),
-(12, 10, 3000, 1000, 100, '10LittleNew.jpg'),
-(13, 12, 4000, 1500, 0, '12Little.jpg'),
-(14, 19, 5000, 1500, 0, '18.9Little.jpg'),
-(15, 19, 6000, 2000, 0, '19Littles.jpg'),
+(11, 5, 1700, 450, 0, '5Little.jpg'),
+(12, 10, 3000, 1000, 50, '10LittleNew.jpg'),
+(13, 12, 4000, 1500, 10, '12Little.jpg'),
+(14, 19, 5000, 1500, 2, '18.9Little.jpg'),
+(15, 19, 6000, 2000, 5, '19Littles.jpg'),
 (16, 20, 7000, 2200, 0, '20Little.jpg'),
-(18, 1, 400, 100, 10, '1Little.jpg');
+(18, 1, 400, 100, 0, '1Little.jpg');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +173,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order`

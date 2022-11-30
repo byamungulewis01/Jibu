@@ -46,21 +46,25 @@ require_once 'top-layout.php';
                         <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
+                                <label for="">Littles</label>
                                     <input type="hidden" name="id" value="<?= $bottle_id; ?>">
                                     <input name="littles" type="text" class="form-control"
                                         value="<?= $Item->Littles; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <input name="Amount" type="number" min="1" class="form-control" value="<?= $Item->Amount; ?>" required>
+                                <label for="">New bottle Amount</label>
+                                    <input name="Amount" type="number" min="1" class="form-control"
+                                        value="<?= $Item->Amount; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <input name="Refill" type="number" min="1" class="form-control" value="<?= $Item->Refill; ?>" required>
+                                <label for="">Refill Amount</label>
+                                    <input name="Refill" type="number" min="1" class="form-control"
+                                        value="<?= $Item->Refill; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <input name="quantity" type="number" min="1"  class="form-control" value="<?= $Item->quantity; ?>" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" id="file" onchange="return fileValidation()" class="form-control" name="image" required>
+                                <label for="">Bottle image</label>
+                                    <input type="file" id="file" onchange="return fileValidation()" class="form-control"
+                                        name="image" required>
                                 </div>
 
                             </div>
@@ -79,8 +83,55 @@ require_once 'top-layout.php';
                 </div>
             </div>
             <?php
-            
                 }
+               elseif (isset($_GET['quant'])) {
+                    $bottle_id = $_GET['quant'];
+                ?>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="button-ad-wrap res-mg-b-30">
+                    <div class="alert-title">
+                        <h2>Update Quantity</h2>
+
+                    </div>
+                    <?php
+                        $sql = 'SELECT * FROM `water_bottle` WHERE id=?';
+                        $statement = $connection->prepare($sql);
+                        $statement->execute([$bottle_id]);
+                        $Product = $statement->fetchAll(PDO::FETCH_OBJ);
+                        ?>
+                    <?php foreach($Product as $Item): ?>
+                    <form action="config/EditQuantity.php" method="post"
+                        class="dropzone dropzone-custom needsclick add-professors" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="<?= $bottle_id; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Quantity</label>
+                                    <input name="quantity" type="number" min="1" class="form-control"
+                                        value="<?= $Item->quantity; ?>" required>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="payment-adress">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light"
+                                        name="submit">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php
+                
+                    }
             else {
             ?>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -94,19 +145,24 @@ require_once 'top-layout.php';
                         <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <input name="littles" type="number" min="1" class="form-control" placeholder="Bottle Littles" required>
+                                    <input name="littles" type="number" min="1" class="form-control"
+                                        placeholder="Bottle Littles" required>
                                 </div>
                                 <div class="form-group">
-                                    <input name="Amount" type="number" min="1"  class="form-control" placeholder="Amount" required>
+                                    <input name="Amount" type="number" min="1" class="form-control" placeholder="Amount"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <input name="Refill" type="number" min="1"  class="form-control" placeholder="Refill" required>
+                                    <input name="Refill" type="number" min="1" class="form-control" placeholder="Refill"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <input name="quantity" type="number" min="1"  class="form-control" placeholder="Quantity" required>
+                                    <input name="quantity" type="number" min="1" class="form-control"
+                                        placeholder="Quantity" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" class="form-control" name="image" id="file" onchange="return fileValidation()" class="form-control" name="image" required>
+                                    <input type="file" class="form-control" name="image" id="file"
+                                        onchange="return fileValidation()" class="form-control" name="image" required>
                                 </div>
                             </div>
                         </div>
@@ -127,12 +183,12 @@ require_once 'top-layout.php';
             ?>
 
             <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">
-            <?php if(isset($_GET['Deleted'])) { ?>
-                                <div class="alert alert-warning">Deleted Successful</div>
-                                <?php } ?>
-            <?php if(isset($_GET['updated'])) { ?>
-                                <div class="alert alert-success">Updated Successful</div>
-                                <?php } ?>
+                <?php if(isset($_GET['Deleted'])) { ?>
+                <div class="alert alert-warning">Deleted Successful</div>
+                <?php } ?>
+                <?php if(isset($_GET['updated'])) { ?>
+                <div class="alert alert-success">Updated Successful</div>
+                <?php } ?>
                 <div class="row">
 
                     <?php
@@ -150,10 +206,12 @@ require_once 'top-layout.php';
                             </div>
                             <div class="course-des">
                                 <p><span><i class="fa fa-money"></i></span> <b>Amount:</b> <?= $Item->Amount; ?></p>
-                                <p><span><i class="fa fa fa-shopping-basket"></i></span> <b>Refill:</b><?= $Item->Refill; ?> | <b>Qantity:</b><?= $Item->quantity; ?></p>
-                                
+                                <p><span><i class="fa fa fa-shopping-basket"></i></span>
+                                    <b>Refill:</b><?= $Item->Refill; ?> | <b>Qantity:</b><?= $Item->quantity; ?></p>
+
                             </div>
                             <div class="product-buttons">
+                                <a href="?quant=<?= $Item->id; ?>" class="btn btn-primary btn-sm">Quantity</a>
                                 <a href="?edit=<?= $Item->id; ?>" class="btn btn-info btn-sm">Edit</a>
                                 <a href="?delete=<?= $Item->id; ?>" class="btn btn-danger btn-sm">Delete</a>
                             </div>

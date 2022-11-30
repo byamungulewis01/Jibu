@@ -29,7 +29,7 @@
             while($data=$stmt->fetch(PDO::FETCH_ASSOC))
             $Q_st = $data['quantity']; 
             if ($Q_st == 0) {
-              echo '<script>swal("Opppps!!", "No Enought in the Store", "Error");</script>';
+              echo '<script>swal("Sorry for us", "No More Bottles in the Store");</script>';
             } else {
              
             $sql = 'UPDATE `cart` SET refill_quantity=?,TotalAmount=? WHERE cart_id=?';
@@ -62,7 +62,7 @@
             while($data=$stmt->fetch(PDO::FETCH_ASSOC))
             $Q_st = $data['quantity']; 
             if ($Q_st == 0) {
-              echo '<script>swal("Opppps!!", "No Enought in the Store", "Error");</script>';
+              echo '<script>swal("Sorry for us", "No More Bottles in the Store");</script>';
             } else {
                 $sql = 'UPDATE `cart` SET Quantity=?,TotalAmount=? WHERE cart_id=?';
                 $statement = $connection->prepare($sql);
