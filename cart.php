@@ -74,7 +74,6 @@
                   $stmt->execute([$remain,$bottle]);
                 } 
               }
-              
           }
        ?>
       <?php

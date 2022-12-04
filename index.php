@@ -38,19 +38,10 @@
 
     }
 ?>
+  <?php  if(isset($_SESSION['msg'])) {?>
+        <?php echo $_SESSION['msg']; ?>
+   <?php unset($_SESSION['msg']); } ?>
 
-      <!-- HERO SECTION-->
-      <!-- <section class="hero pb-3 bg-cover bg-center d-flex align-items-center"  style="background: url(Images/hero.jpg)">
-          <div class="container py-5">
-            <div class="row px-3 px-lg-5">
-              <div class="col-lg-6">
-                <p class="text-muted small text-uppercase mb-2">New Inspiration 2020</p>
-                <h1 class="h2 text-uppercase mb-3">20% off on new season</h1><a class="btn btn-info" href="shop.html">Browse collections</a>
-              </div>
-            </div>
-          </div>
-        </section>
-         -->
       <div class="container">
       <?php  if(isset($_GET['add'])) {?>
                         <?php echo '<script>swal("Good job!", "Bottles Added to cart", "success");</script>'; ?>
@@ -93,6 +84,41 @@
               </div>
             </div>
             <?php endforeach; ?>
+          </div>
+        </section>
+            <!-- NEWSLETTER-->
+            <section class="py-5">
+          <div class="container p-0">
+            <div class="row gy-3">
+              <div class="col-lg-6">
+                <h5 class="text-uppercase">Let's be friends!</h5>
+                <p class="text-sm text-muted mb-0">Any Suggestion Write here</p>
+              </div>
+              <div class="col-lg-6">
+              <form action="Config/message.php" method="post">
+          <div class="row gy-3">
+           <div class="col-lg-12">
+              <label class="form-label text-sm text-uppercase" for="address">Address</label>
+              <textarea class="form-control form-control" name="message"></textarea>
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label text-sm text-uppercase" for="email">Your Names</label>
+              <input name="names" class="form-control form-control" type="text"
+                placeholder="Joson Mc" >
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label text-sm text-uppercase" for="phone">Phone number </label>
+              <input name="mobileno" class="form-control form-control" type="number" 
+                placeholder="07XXXXXXXX" required>
+            </div>
+
+            <div class="col-lg-12 form-group">
+              <button class="btn btn-info" type="submit">Send Message</button>
+            </div>
+          </div>
+        </form>
+              </div>
+            </div>
           </div>
         </section>
     

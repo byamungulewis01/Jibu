@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2022 at 12:47 PM
+-- Generation Time: Dec 04, 2022 at 06:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -67,6 +67,30 @@ INSERT INTO `cart` (`cart_id`, `bottle_id`, `Client_Host`, `Quantity`, `refill_q
 (10, 18, '::1', 1, 5, 900),
 (11, 11, '::1', 4, 13, 14100),
 (12, 13, '::1', 0, 1, 1500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_ideas`
+--
+
+CREATE TABLE `customer_ideas` (
+  `id` int(11) NOT NULL,
+  `names` varchar(30) NOT NULL,
+  `message` text NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_ideas`
+--
+
+INSERT INTO `customer_ideas` (`id`, `names`, `message`, `phone`, `date`) VALUES
+(1, 'HABIMANA Aline', 'Mwongeremo izindi Product\r\nNshinshi Mutanga services nsiza', '0786637377', '2022-12-04 15:36:57'),
+(2, 'William', '', '0789787655', '2022-12-04 15:43:01'),
+(3, 'NYIRAHABIMANA Chantal', '', '0786637377', '2022-12-04 15:43:38'),
+(4, 'William', 'Kjsksjks\r\nakajkajkjakjakjkjkjs\r\njkajkjs', '0786637377', '2022-12-04 15:44:55');
 
 -- --------------------------------------------------------
 
@@ -148,6 +172,12 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`);
 
 --
+-- Indexes for table `customer_ideas`
+--
+ALTER TABLE `customer_ideas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
@@ -174,6 +204,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `cart`
   MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `customer_ideas`
+--
+ALTER TABLE `customer_ideas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order`

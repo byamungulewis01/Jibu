@@ -24,15 +24,14 @@ if (!isset($_SESSION['admin']) or empty($_SESSION['admin'])) {
                             <li class="nav-item">
                                 <a class="nav-link" href="Store.php">Store</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="message.php">Clients Chart</a>
+                            </li>
                         
                           
                         </ul>
                     </div>
                     <ul class="navbar-nav ml-auto">
-
-
-                        <div class="topbar-divider d-none d-sm-block">
-                        </div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
